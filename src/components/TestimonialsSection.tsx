@@ -31,11 +31,14 @@ export default function TestimonialsSection() {
             <div 
               id={`testimonial-card-${testimonial.id}`}
               key={testimonial.id} 
-              className="bg-slate-50 border border-slate-100 p-6.5 sm:p-8 rounded-2xl flex flex-col justify-between hover:border-slate-200 hover:bg-white hover:shadow-xs transition-all relative group"
+              className="bg-white shadow-depth-1 p-6.5 sm:p-8 rounded-2xl flex flex-col justify-between hover-lift-3d-sm glass-bezel transition-all duration-300 relative group"
             >
               
+              {/* Glow light effect inside each testimonial on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 via-indigo-500/10 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
+
               {/* Quote icon accent */}
-              <Quote className="h-8 w-8 text-indigo-100 group-hover:text-indigo-200 transition-colors absolute top-6 right-6" />
+              <Quote className="h-8 w-8 text-indigo-150/40 group-hover:text-indigo-200 transition-colors absolute top-6 right-6" />
 
               <div className="flex-1">
                 <p className="text-sm text-slate-650 leading-relaxed font-sans pr-4 relative">

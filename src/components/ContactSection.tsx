@@ -130,12 +130,14 @@ export default function ContactSection() {
 
           {/* Right interactive form card panel */}
           <div className="lg:col-span-7">
-            <div className="bg-white border border-slate-100 rounded-2xl p-6.5 sm:p-10 shadow-xs relative">
+            <div className="bg-white shadow-depth-3 glass-bezel rounded-2xl p-6.5 sm:p-10 relative overflow-hidden">
+              {/* Soft visual depth lights */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-indigo-500/5 to-transparent rounded-full pointer-events-none"></div>
               
               {isSubmitted ? (
                 // SUCCESS SUBMISSION VIEW
-                <div id="contact-success-card" className="py-12 text-center flex flex-col items-center justify-center gap-6 animate-fade-in">
-                  <div className="h-16 w-16 bg-emerald-50 border border-emerald-100 text-emerald-500 rounded-full flex items-center justify-center shadow-md">
+                <div id="contact-success-card" className="py-12 text-center flex flex-col items-center justify-center gap-6 animate-fade-in relative z-10">
+                  <div className="h-16 w-16 bg-emerald-50 border border-emerald-100 text-emerald-500 rounded-full flex items-center justify-center shadow-depth-1">
                     <CheckCircle2 className="h-8 w-8" />
                   </div>
                   
@@ -146,7 +148,7 @@ export default function ContactSection() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-slate-550 bg-slate-50 border border-slate-150 rounded-xl leading-relaxed text-xs text-slate-550 max-w-md text-left font-sans">
+                  <div className="p-4 bg-slate-50 border border-slate-150/50 rounded-xl leading-relaxed text-xs text-slate-550 max-w-md text-left font-sans shadow-xs">
                     <span className="font-bold text-slate-800">Next Action State:</span> An intake summary review details will be sent to your inbox (**{email}**). Keep a lookout.
                   </div>
 
@@ -158,31 +160,32 @@ export default function ContactSection() {
                       setEmail('');
                       setMessage('');
                     }}
-                    className="mt-4 rounded-lg border border-slate-250 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer transition"
+                    className="mt-4 rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer transition micro-active-button"
                   >
                     Submit Another Brief
                   </button>
                 </div>
               ) : (
                 // ACTIVE FORM INTERFACE layout
-                <form id="contact-form-brief" onSubmit={handleFormSubmit} className="space-y-6">
+                <form id="contact-form-brief" onSubmit={handleFormSubmit} className="space-y-6 relative z-10">
                   
                   <div>
-                    <span className="block text-xs font-semibold text-slate-705 text-slate-800 mb-3">
+                    <span className="block text-xs font-semibold text-slate-800 mb-3">
                       Project Type Interest:
                     </span>
                     
                     {/* Select box tags selection grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-3">
                       {projectOptions.map((opt) => (
                         <button
                           id={`proj-opt-${opt.id}`}
                           type="button"
                           key={opt.id}
                           onClick={() => setProjectType(opt.id)}
-                          className={`rounded-lg border px-4 py-2.5 text-xs font-semibold text-left select-none cursor-pointer transition-all ${projectType === opt.id ? 'bg-indigo-600 border-indigo-600 text-white shadow-xs' : 'bg-slate-50 border-slate-100 text-slate-700 hover:border-slate-350'}`}
+                          className={`rounded-lg px-4 py-2.5 text-xs font-semibold text-left select-none cursor-pointer transition-all duration-300 micro-active-button flex items-center justify-between border ${projectType === opt.id ? 'bg-indigo-600 border-indigo-600 text-white shadow-depth-1 translate-y-[-1px]' : 'bg-slate-50/70 border-slate-200/50 text-slate-700 hover:border-slate-350 hover:bg-slate-50'}`}
                         >
-                          {opt.label}
+                          <span>{opt.label}</span>
+                          {projectType === opt.id && <span className="h-1.5 w-1.5 rounded-full bg-white block animate-pulse"></span>}
                         </button>
                       ))}
                     </div>
@@ -199,7 +202,7 @@ export default function ContactSection() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="John Doe"
-                        className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:border-indigo-500 focus:outline-hidden transition"
+                        className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:shadow-depth-1 focus:outline-hidden transition-all duration-350"
                       />
                     </div>
 
@@ -212,7 +215,7 @@ export default function ContactSection() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="john@company.com"
-                        className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:border-indigo-500 focus:outline-hidden transition"
+                        className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:shadow-depth-1 focus:outline-hidden transition-all duration-350"
                       />
                     </div>
 
@@ -227,16 +230,16 @@ export default function ContactSection() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Redesigning our core SaaS marketing flow to improve developer handoff and lift conversion rate metrics..."
-                      className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:border-indigo-500 focus:outline-hidden transition resize-none leading-relaxed"
+                      className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:shadow-depth-1 focus:outline-hidden transition-all duration-350 resize-none leading-relaxed"
                     ></textarea>
                   </div>
 
-                  <div className="pt-2 border-t border-slate-150">
+                  <div className="pt-2 border-t border-slate-200/60">
                     <button
                       id="submit-contact-brief-btn"
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full rounded-lg bg-indigo-600 py-3 text-center text-xs font-bold text-white shadow-xs hover:bg-indigo-505 hover:bg-indigo-550 transition-colors cursor-pointer flex items-center justify-center gap-2"
+                      className="w-full rounded-lg bg-indigo-600 py-3 text-center text-xs font-bold text-white shadow-depth-1 hover:bg-indigo-700 hover:shadow-depth-2 hover:translate-y-[-1px] active:translate-y-[1px] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 micro-active-button"
                     >
                       {isSubmitting ? (
                         <span>Transmitting Brief...</span>

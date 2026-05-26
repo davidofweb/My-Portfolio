@@ -1,10 +1,102 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@405;500;600;700&family=JetBrains+Mono:wght@405;500;700&family=Plus+Jakarta+Sans:wght@405;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+@property --accent-50 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #eff6ff;
+}
+
+@property --accent-100 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #dbeafe;
+}
+
+@property --accent-200 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #bfdbfe;
+}
+
+@property --accent-500 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #3b82f6;
+}
+
+@property --accent-600 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2563EB;
+}
+
+@property --accent-700 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #1d4ed8;
+}
+
+@property --accent-800 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #1e40af;
+}
+
+@property --accent-color-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(37, 99, 235, 0.08);
+}
+
+@property --accent-color-border-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(37, 99, 235, 0.15);
+}
+
+:root {
+  /* Default fallbacks matching Blue Accent precisely */
+  --accent-50: #eff6ff;
+  --accent-100: #dbeafe;
+  --accent-200: #bfdbfe;
+  --accent-500: #3b82f6;
+  --accent-600: #2563EB;
+  --accent-700: #1d4ed8;
+  --accent-800: #1e40af;
+  --accent-color-glow: rgba(37, 99, 235, 0.08);
+  --accent-color-border-hover: rgba(37, 99, 235, 0.15);
+
+  /* Smooth transition of custom properties for accent selection */
+  transition: 
+    --accent-50 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-100 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-200 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-500 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-600 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-700 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-800 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-color-glow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    --accent-color-border-hover 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Map indigo utility classes to accent CSS Variables dynamically */
+  --color-indigo-50: var(--accent-50);
+  --color-indigo-100: var(--accent-100);
+  --color-indigo-150: var(--accent-100);
+  --color-indigo-200: var(--accent-200);
+  --color-indigo-500: var(--accent-500);
+  --color-indigo-600: var(--accent-600);
+  --color-indigo-700: var(--accent-700);
+  --color-indigo-800: var(--accent-800);
+  
+  /* Graphite specific variables for typography & containers */
+  --color-graphite: #18181B;
 }
 
 /* Base custom interactive layout elements */
@@ -30,3 +122,132 @@
 .animate-fade-in {
   animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* 3D Visual Depth and Realistic Multi-layered Shadows (Linear / Stripe inspired) */
+.shadow-depth-1 {
+  box-shadow: 
+    0px 1px 2px rgba(15, 23, 42, 0.04),
+    0px 2px 6px rgba(15, 23, 42, 0.02);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.shadow-depth-2 {
+  box-shadow: 
+    0px 1px 3px rgba(15, 23, 42, 0.05),
+    0px 6px 16px rgba(15, 23, 42, 0.04),
+    0px 12px 28px rgba(15, 23, 42, 0.02);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.shadow-depth-3 {
+  box-shadow: 
+    0px 1px 3px rgba(15, 23, 42, 0.06),
+    0px 12px 36px rgba(15, 23, 42, 0.06),
+    0px 24px 64px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* Glassmorphism translucent panels */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0px 1px 2px rgba(15, 23, 42, 0.04),
+    0px 8px 32px rgba(15, 23, 42, 0.03);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0px 1px 3px rgba(0, 0, 0, 0.1),
+    0px 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Glass panel styled with custom reflective bezel highlight edges */
+.glass-bezel {
+  position: relative;
+}
+
+.glass-bezel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(15, 23, 42, 0.04) 60%, rgba(255, 255, 255, 0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-bezel-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(0, 0, 0, 0.2) 60%, rgba(255, 255, 255, 0.1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Interactive 3D physical elevation & lift-off transitions */
+.hover-lift-3d {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hover-lift-3d:hover {
+  transform: translateY(-8px) rotateX(1.5deg) rotateY(-0.5deg);
+  border-color: var(--accent-color-border-hover) !important;
+  box-shadow: 
+    0px 2px 4px var(--accent-color-glow),
+    0px 16px 36px rgba(24, 24, 27, 0.05),
+    0px 32px 72px var(--accent-color-glow);
+}
+
+.hover-lift-3d-sm {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift-3d-sm:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--accent-color-border-hover) !important;
+  box-shadow: 
+    0px 4px 12px rgba(24, 24, 27, 0.03),
+    0px 8px 24px var(--accent-color-glow);
+}
+
+/* Realistic light-source backgrounds & reflective gradients */
+.lighting-source-top {
+  background: radial-gradient(120% 60% at 50% 0%, rgba(244, 245, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.lighting-source-indigo-glow {
+  background: radial-gradient(150% 60% at 50% -10%, var(--accent-color-glow) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.lighting-source-indigo-deep {
+  background: radial-gradient(120% 50% at 50% -20%, var(--accent-color-glow) 0%, rgba(24, 24, 27, 0) 100%), #18181B;
+}
+
+/* Subtle micro-interactive active state simulation */
+.micro-active-button {
+  transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+.micro-active-button:active {
+  transform: scale(0.97) translateY(1px);
+}
+

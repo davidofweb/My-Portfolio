@@ -84,7 +84,7 @@ export default function Header({ selectedProjectId, onBack, onNavigate }: Header
               e.preventDefault();
               handleNavClick("contact");
             }}
-            className="rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-slate-800 transition-all cursor-pointer"
+            className="rounded-lg bg-[#18181B] border border-zinc-805/20 px-4 py-2 text-xs font-semibold text-white shadow-depth-1 hover:bg-[#27272A] transition-all cursor-pointer"
           >
             Hire Me
           </a>

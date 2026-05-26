@@ -22,14 +22,18 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-slate-50 border-b border-slate-100">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+    <section id="about" className="py-20 md:py-28 bg-slate-50/70 border-b border-slate-100 relative overflow-hidden lighting-source-top">
+      {/* Structural ambient 3D lights */}
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Narrative text block */}
           <div className="lg:col-span-6">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-md inline-block mb-3 animate-pulse">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50/80 px-3 py-1.5 rounded-md inline-block mb-3 border border-indigo-150/20 shadow-xs">
               My Story
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-none mb-6">
@@ -49,15 +53,15 @@ export default function AboutSection() {
 
             {/* Micro badge stats */}
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-200 mt-8">
-              <div>
+              <div className="bg-white/40 p-4.5 rounded-xl border border-slate-200/50 shadow-xs backdrop-blur-xs">
                 <span className="block text-xl font-extrabold font-mono text-slate-900 leading-none">3+</span>
                 <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-slate-400 mt-1">Years Exp</span>
               </div>
-              <div>
+              <div className="bg-white/40 p-4.5 rounded-xl border border-slate-200/50 shadow-xs backdrop-blur-xs">
                 <span className="block text-xl font-extrabold font-mono text-slate-900 leading-none">10+</span>
                 <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-slate-400 mt-1">Projects Live</span>
               </div>
-              <div>
+              <div className="bg-white/40 p-4.5 rounded-xl border border-slate-200/50 shadow-xs backdrop-blur-xs">
                 <span className="block text-xl font-extrabold font-mono text-slate-900 leading-none">100%</span>
                 <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-slate-400 mt-1">Remote Fit</span>
               </div>
@@ -70,10 +74,10 @@ export default function AboutSection() {
               <div 
                 id={`benefit-card-${index}`}
                 key={benefit.title} 
-                className="bg-white border border-slate-100 rounded-2xl p-6.5 flex gap-5 shadow-xs hover:border-indigo-100 transition-colors"
+                className="bg-white shadow-depth-1 rounded-2xl p-6.5 flex gap-5 hover-lift-3d-sm glass-bezel transition-all duration-300"
               >
                 
-                <div className="p-3 bg-indigo-50 rounded-xl max-h-fit border border-indigo-100 shrink-0">
+                <div className="p-3 bg-indigo-50/80 rounded-xl max-h-fit border border-indigo-100/60 shrink-0 shadow-xs">
                   <benefit.icon className="h-5 w-5 text-indigo-600" />
                 </div>
 

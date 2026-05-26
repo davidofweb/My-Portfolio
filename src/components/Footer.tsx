@@ -14,15 +14,15 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="site-footer" className="bg-slate-900 text-slate-400 py-16 border-t border-slate-850">
+    <footer id="site-footer" className="bg-graphite text-slate-400 py-16 border-t border-zinc-850/50">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         
         {/* Top footer row */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-zinc-800/60">
           
           <div className="md:col-span-10 lg:col-span-5 flex flex-col items-start block">
             <div className="flex items-center gap-2 mb-4">
-              <span className="flex h-7 w-7 items-center justify-center rounded bg-indigo-500 font-mono text-xs font-bold text-white uppercase">
+              <span className="flex h-7 w-7 items-center justify-center rounded bg-indigo-600 font-mono text-xs font-bold text-white uppercase">
                 DO
               </span>
               <span className="text-sm font-semibold text-white tracking-widest uppercase">{PERSONAL_INFO.name}</span>
@@ -37,7 +37,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-lg bg-slate-800 p-2.5 hover:bg-slate-750 hover:text-white transition-all text-slate-400 flex items-center gap-1.5 text-xs font-semibold px-3"
+                  className="rounded-lg bg-zinc-900 border border-zinc-800/40 p-2.5 hover:bg-zinc-800 hover:text-white transition-all text-slate-400 flex items-center gap-1.5 text-xs font-semibold px-3"
                   aria-label={social.label}
                   title={social.label}
                 >
@@ -52,15 +52,15 @@ export default function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">Core Principles</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-indigo-400">01.</span>
+                <span className="text-indigo-600 font-semibold font-mono">01.</span>
                 <span>8px Layout Spacing Grid Precision</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-indigo-400">02.</span>
+                <span className="text-indigo-600 font-semibold font-mono">02.</span>
                 <span>Robust Figma Auto-Layout Components</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-indigo-400">03.</span>
+                <span className="text-indigo-600 font-semibold font-mono">03.</span>
                 <span>Developer-aligned specs & JSON tokens</span>
               </li>
             </ul>
@@ -69,13 +69,13 @@ export default function Footer() {
           <div className="md:col-span-2 md:col-start-11 flex flex-col items-start md:items-end justify-between">
             <div className="text-left md:text-right">
               <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-2">Availability</h4>
-              <p className="text-xs text-indigo-400 font-medium">● High Priority Projects</p>
+              <p className="text-xs text-indigo-600 font-medium font-mono">● High Priority Projects</p>
               <p className="text-xs text-slate-500 mt-1">Bookings open for Q3/Q4 2026</p>
             </div>
             
             <button
               onClick={handleScrollToTop}
-              className="mt-8 md:mt-0 flex items-center justify-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-slate-700 hover:text-white transition-colors cursor-pointer"
+              className="mt-8 md:mt-0 flex items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-zinc-700 hover:text-white transition-colors cursor-pointer"
             >
               <span>Back to Top</span>
               <ArrowUp className="h-3.5 w-3.5" />

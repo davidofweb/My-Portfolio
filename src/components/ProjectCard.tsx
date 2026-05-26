@@ -169,45 +169,50 @@ export default function ProjectCard({ project, onViewCaseStudy }: ProjectCardPro
   return (
     <article 
       id={`project-card-${project.id}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-xs hover:border-slate-200 hover:shadow-md transition-all duration-300"
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-depth-2 hover-lift-3d glass-bezel transition-all duration-400"
     >
       
       {/* Visual Workspace Thumb */}
-      <div className="aspect-16/10 w-full overflow-hidden bg-slate-50 border-b border-slate-100">
+      <div className="aspect-16/10 w-full overflow-hidden bg-slate-50 border-b border-slate-100/60 relative">
+        {/* Shiny lighting gradient overlay sheen */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/30 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
         <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]">
           {renderVisualPreview()}
         </div>
       </div>
 
       {/* Narrative Section Info */}
-      <div className="flex flex-1 flex-col p-6 sm:p-8">
+      <div className="flex flex-1 flex-col p-6 sm:p-8 relative">
         
+        {/* Dynamic spot lighting glow in background of card content on hover */}
+        <div className="absolute inset-0 bg-[radial-gradient(100px_at_var(--x,_50%)_var(--y,_50%),rgba(99,102,241,0.02)_0%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
         {/* Metric Tag and Client info */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-4 relative z-10">
           <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 block">
             {project.client}
           </span>
-          <div className="rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-semibold text-indigo-700 font-mono flex items-center gap-1">
+          <div className="rounded-full bg-indigo-50/80 px-2.5 py-0.5 text-xs font-semibold text-indigo-700 font-mono flex items-center gap-1 border border-indigo-100/40 shadow-xs">
             <span>{project.stat.label}:</span>
             <span className="font-bold">{project.stat.value}</span>
           </div>
         </div>
 
         {/* Project description hierarchy */}
-        <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-2 group-hover:text-indigo-600 transition-colors">
+        <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-2 group-hover:text-indigo-600 transition-colors duration-300 relative z-10">
           {project.title}
         </h3>
         
-        <p className="text-sm text-slate-500 leading-relaxed mb-6 flex-1">
+        <p className="text-sm text-slate-500 leading-relaxed mb-6 flex-1 pr-1 relative z-10">
           {project.subtitle}
         </p>
 
         {/* Project specific categorizer tags */}
-        <div className="flex flex-wrap gap-1.5 mb-6">
+        <div className="flex flex-wrap gap-1.5 mb-6 relative z-10">
           {project.tags.map((tag) => (
             <span 
               key={tag} 
-              className="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 border border-slate-100"
+              className="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 border border-slate-100/80 hover:bg-white hover:border-indigo-100/40 hover:text-indigo-600 hover:shadow-xs transition-all duration-300 transform hover:-translate-y-0.5"
             >
               {tag}
             </span>
@@ -215,14 +220,14 @@ export default function ProjectCard({ project, onViewCaseStudy }: ProjectCardPro
         </div>
 
         {/* Trigger Button to Case Study */}
-        <div className="pt-4 border-t border-slate-50 flex items-center">
+        <div className="pt-4 border-t border-slate-50 flex items-center relative z-10">
           <button
             id={`open-study-btn-${project.id}`}
             onClick={() => onViewCaseStudy(project.id)}
-            className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors cursor-pointer w-full text-left"
+            className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors cursor-pointer w-full text-left micro-active-button"
           >
             <span>Read Design Case Study</span>
-            <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1.5 transition-transform" />
+            <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1.5 transition-transform duration-350" />
           </button>
         </div>
 
