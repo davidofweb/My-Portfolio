@@ -14,7 +14,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="site-footer" className="bg-graphite text-slate-400 py-16 border-t border-zinc-850/50">
+    <footer id="site-footer" className="bg-transparent text-zinc-400 py-16 border-t border-zinc-900/40 relative z-10">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         
         {/* Top footer row */}

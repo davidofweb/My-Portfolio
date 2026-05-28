@@ -1,5 +1,5 @@
 import { PERSONAL_INFO } from '../data';
-import { ShieldCheck, Zap, MessageSquare, Compass, Send } from 'lucide-react';
+import { ShieldCheck, Zap, MessageSquare } from 'lucide-react';
 
 export default function AboutSection() {
   
@@ -22,10 +22,10 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-slate-50/70 border-b border-slate-100 relative overflow-hidden lighting-source-top">
+    <section id="about" className="py-20 md:py-28 bg-transparent border-b border-zinc-900/10 relative overflow-hidden">
       {/* Structural ambient 3D lights */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-indigo-505/3 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-emerald-505/3 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8 relative z-10">
         
@@ -33,17 +33,17 @@ export default function AboutSection() {
           
           {/* Narrative text block */}
           <div className="lg:col-span-6">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50/80 px-3 py-1.5 rounded-md inline-block mb-3 border border-indigo-150/20 shadow-xs">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-400 bg-zinc-900 border border-zinc-805 px-3 py-1.5 rounded-md inline-block mb-3 shadow-xs">
               My Story
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-none mb-6">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none mb-6">
               Hi, I'm {PERSONAL_INFO.name}.
             </h2>
-            <div className="space-y-4 text-sm sm:text-base text-slate-650 font-sans leading-relaxed text-slate-600">
+            <div className="space-y-4 text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
               <p>
                 I am a professional Web Developer & Designer with 3 years of experience crafting conversion-focused web applications, dynamic templates, and refined interface designs for modern founders.
               </p>
-              <p className="font-semibold text-slate-800">
+              <p className="font-semibold text-zinc-200">
                 I believe that state-of-the-art web systems must combine absolute aesthetic precision with smooth, performance-focused code.
               </p>
               <p>
@@ -52,18 +52,18 @@ export default function AboutSection() {
             </div>
 
             {/* Micro badge stats */}
-            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-200 mt-8">
-              <div className="bg-white/40 p-4.5 rounded-xl border border-slate-200/50 shadow-xs backdrop-blur-xs">
-                <span className="block text-xl font-extrabold font-mono text-slate-900 leading-none">3+</span>
-                <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-slate-400 mt-1">Years Exp</span>
+            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-zinc-850 mt-8">
+              <div className="bg-[#09090b]/40 border border-zinc-900 p-4.5 rounded-xl shadow-xs backdrop-blur-md">
+                <span className="block text-2xl font-extrabold font-mono text-white leading-none">3+</span>
+                <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-zinc-500 mt-1">Years Exp</span>
               </div>
-              <div className="bg-white/40 p-4.5 rounded-xl border border-slate-200/50 shadow-xs backdrop-blur-xs">
-                <span className="block text-xl font-extrabold font-mono text-slate-900 leading-none">10+</span>
-                <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-slate-400 mt-1">Projects Live</span>
+              <div className="bg-[#09090b]/40 border border-zinc-900 p-4.5 rounded-xl shadow-xs backdrop-blur-md">
+                <span className="block text-2xl font-extrabold font-mono text-white leading-none">10+</span>
+                <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-zinc-500 mt-1">Projects Live</span>
               </div>
-              <div className="bg-white/40 p-4.5 rounded-xl border border-slate-200/50 shadow-xs backdrop-blur-xs">
-                <span className="block text-xl font-extrabold font-mono text-slate-900 leading-none">100%</span>
-                <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-slate-400 mt-1">Remote Fit</span>
+              <div className="bg-[#09090b]/40 border border-zinc-900 p-4.5 rounded-xl shadow-xs backdrop-blur-md">
+                <span className="block text-2xl font-extrabold font-mono text-white leading-none">100%</span>
+                <span className="block text-[10px] uppercase font-mono tracking-wider font-semibold text-zinc-500 mt-1">Remote Fit</span>
               </div>
             </div>
           </div>
@@ -74,18 +74,18 @@ export default function AboutSection() {
               <div 
                 id={`benefit-card-${index}`}
                 key={benefit.title} 
-                className="bg-white shadow-depth-1 rounded-2xl p-6.5 flex gap-5 hover-lift-3d-sm glass-bezel transition-all duration-300"
+                className="bg-[#09090b]/40 backdrop-blur-md border border-zinc-900 rounded-2xl p-6.5 flex gap-5 hover-lift-3d glass-bezel-dark transition-all duration-300"
               >
                 
-                <div className="p-3 bg-indigo-50/80 rounded-xl max-h-fit border border-indigo-100/60 shrink-0 shadow-xs">
-                  <benefit.icon className="h-5 w-5 text-indigo-600" />
+                <div className="p-3 bg-zinc-900 border border-zinc-800 rounded-xl max-h-fit shrink-0 shadow-xs text-indigo-400">
+                  <benefit.icon className="h-5 w-5" />
                 </div>
 
                 <div className="space-y-1">
-                  <h4 className="text-sm font-bold text-slate-900 tracking-tight">
+                  <h4 className="text-sm font-bold text-white tracking-tight">
                     {benefit.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
+                  <p className="text-xs sm:text-sm text-zinc-405 leading-relaxed font-sans">
                     {benefit.description}
                   </p>
                 </div>

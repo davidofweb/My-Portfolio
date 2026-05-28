@@ -9,7 +9,7 @@ import SkillsSection from './components/SkillsSection';
 import AboutSection from './components/AboutSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
-import InteractiveParticles from './components/InteractiveParticles';
+import ThreeCanvas from './components/ThreeCanvas';
 import AccentSelector from './components/AccentSelector';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Figma, Sparkles, Layout, Compass, ShieldCheck, Mail, ArrowUpRight } from 'lucide-react';
@@ -39,17 +39,14 @@ export default function App() {
 
   const renderHomeHero = () => {
     return (
-      <section id="hero" className="relative overflow-hidden bg-white/80 py-24 sm:py-32 border-b border-slate-100 lighting-source-indigo-glow">
-        
-        {/* Interactive parallax particles reacting to mouse and fingers */}
-        <InteractiveParticles />
+      <section id="hero" className="relative overflow-hidden bg-transparent py-24 sm:py-32 border-b border-zinc-900/10">
         
         {/* Soft interactive radial background ambient lights */}
         <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-emerald-500/3 rounded-full blur-[120px] pointer-events-none"></div>
 
         {/* Abstract background spacing layouts markers */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]"></div>
         
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8 flex flex-col items-center text-center z-10">
           
@@ -58,7 +55,7 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-8 rounded-full bg-white/80 shadow-depth-1 glass-bezel px-4 py-1.5 text-xs font-semibold text-indigo-700 font-mono inline-flex items-center gap-1.5"
+            className="mb-8 rounded-full bg-zinc-900/60 backdrop-blur-md border border-zinc-800/40 shadow-depth-2 px-4 py-1.5 text-xs font-semibold text-indigo-400 font-mono inline-flex items-center gap-1.5"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             <span>{PERSONAL_INFO.availability}</span>
@@ -69,16 +66,16 @@ export default function App() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-none max-w-4xl"
+            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-none max-w-4xl"
           >
-            Creating modern SaaS layouts designed for <span className="text-indigo-600 relative">growth</span> and builder alignment.
+            Creating modern SaaS layouts designed for <span className="text-indigo-400 relative bg-linear-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent shadow-[0_0_20px_rgba(99,102,241,0.2)]">growth</span> and builder alignment.
           </motion.h1>
  
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-base sm:text-lg text-slate-500 leading-relaxed max-w-2xl font-sans"
+            className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl font-sans"
           >
             I'm <strong>{PERSONAL_INFO.name}</strong>, a freelance Web and UI Designer specializing in high-converting landing pages, sleek SaaS panels, and rigorous developer-aligned visual systems.
           </motion.p>
@@ -93,7 +90,7 @@ export default function App() {
             <button
               id="hero-cta-view-projects"
               onClick={() => handleNavigateSection('projects')}
-              className="w-full sm:w-auto rounded-lg bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white shadow-depth-1 hover:bg-slate-800 hover:shadow-depth-2 active:scale-[0.98] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 group micro-active-button"
+              className="w-full sm:w-auto rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-black shadow-depth-2 hover:bg-zinc-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 group micro-active-button"
             >
               <span>Explore My Works</span>
               <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
@@ -102,7 +99,7 @@ export default function App() {
             <button
               id="hero-cta-contact"
               onClick={() => handleNavigateSection('contact')}
-              className="w-full sm:w-auto rounded-lg border border-slate-200 bg-white shadow-depth-1 px-6 py-3.5 text-sm font-semibold text-slate-700 hover:border-slate-350 hover:bg-slate-50 active:scale-[0.98] transition-all duration-300 cursor-pointer text-center micro-active-button"
+              className="w-full sm:w-auto rounded-lg border border-zinc-800 bg-zinc-950/40 backdrop-blur-md shadow-depth-1 px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:border-zinc-700 hover:bg-zinc-900/60 active:scale-[0.98] transition-all duration-300 cursor-pointer text-center micro-active-button"
             >
               Start Project Brief
             </button>
@@ -113,67 +110,67 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 border-t border-slate-100 pt-12 text-left w-full max-w-4xl"
+            className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 border-t border-zinc-900/40 pt-12 text-left w-full max-w-4xl"
           >
-            <div className="flex gap-4 p-5 rounded-2xl bg-white shadow-depth-1 glass-bezel hover-lift-3d-sm transition-all duration-300">
-              <div className="p-2.5 h-fit bg-slate-50 border border-slate-100 rounded-xl shrink-0 shadow-xs text-indigo-600">
+            <div className="flex gap-4 p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-zinc-900/85 hover:border-zinc-800 shadow-depth-3 glass-bezel-dark hover-lift-3d transition-all duration-300">
+              <div className="p-2.5 h-fit bg-zinc-900 border border-zinc-800 rounded-xl shrink-0 shadow-xs text-indigo-400">
                 <Layout className="h-4 w-4" />
               </div>
               <div>
-                <h3 className="text-xs font-bold text-slate-950 uppercase tracking-widest font-mono">Conversion UI Core</h3>
-                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed font-sans">Layout logic structured specifically to decrease bounce bounce metrics.</p>
+                <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono">Conversion UI Core</h3>
+                <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed font-sans">Layout logic structured specifically to decrease bounce metrics.</p>
               </div>
             </div>
  
-            <div className="flex gap-4 p-5 rounded-2xl bg-white shadow-depth-1 glass-bezel hover-lift-3d-sm transition-all duration-300">
-              <div className="p-2.5 h-fit bg-slate-50 border border-slate-100 rounded-xl shrink-0 shadow-xs text-indigo-600">
+            <div className="flex gap-4 p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-zinc-900/85 hover:border-zinc-800 shadow-depth-3 glass-bezel-dark hover-lift-3d transition-all duration-300">
+              <div className="p-2.5 h-fit bg-zinc-900 border border-zinc-800 rounded-xl shrink-0 shadow-xs text-indigo-400">
                 <Compass className="h-4 w-4" />
               </div>
               <div>
-                <h3 className="text-xs font-bold text-slate-950 uppercase tracking-widest font-mono">Figma Auto-Layout</h3>
-                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed font-sans">Fully responsive frames scaling beautifully down to target phone sizes.</p>
+                <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono">Figma Auto-Layout</h3>
+                <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed font-sans">Fully responsive frames scaling beautifully down to target phone sizes.</p>
               </div>
             </div>
  
-            <div className="flex gap-4 p-5 rounded-2xl bg-white shadow-depth-1 glass-bezel hover-lift-3d-sm transition-all duration-300">
-              <div className="p-2.5 h-fit bg-slate-50 border border-slate-100 rounded-xl shrink-0 shadow-xs text-indigo-600">
+            <div className="flex gap-4 p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-zinc-900/85 hover:border-zinc-800 shadow-depth-3 glass-bezel-dark hover-lift-3d transition-all duration-300">
+              <div className="p-2.5 h-fit bg-zinc-900 border border-zinc-800 rounded-xl shrink-0 shadow-xs text-indigo-400">
                 <ShieldCheck className="h-4 w-4" />
               </div>
               <div>
-                <h3 className="text-xs font-bold text-slate-950 uppercase tracking-widest font-mono">No-Guess Dev Handoff</h3>
-                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed font-sans">Documented spacing tokens matching standard CSS and Tailwind parameters.</p>
+                <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono">No-Guess Dev Handoff</h3>
+                <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed font-sans">Documented spacing tokens matching standard CSS and Tailwind parameters.</p>
               </div>
             </div>
  
           </motion.div>
  
          </div>
-       </section>
+      </section>
     );
   };
 
   const renderProjectShowcase = () => {
     return (
-      <section id="projects" className="py-20 md:py-28 bg-[#FAFAFA] border-b border-slate-100">
+      <section id="projects" className="py-20 md:py-28 bg-transparent border-b border-zinc-900/10">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           
           {/* Projects Header block */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-md inline-block mb-3">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-400 bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-md inline-block mb-3">
                 Selected Works
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-none mb-4">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none mb-4">
                 Redesigns that deliver real conversions.
               </h2>
-              <p className="text-base text-slate-500 leading-relaxed font-sans">
+              <p className="text-base text-zinc-400 leading-relaxed font-sans">
                 A showcase of SaaS portals and marketing layouts. Click **“Read Design Case Study”** below to audit the comprehensive design system, spacing variables, and developer workflow guidelines.
               </p>
             </div>
             
-            <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-400 bg-white border border-slate-100 px-3 py-1.5 rounded-lg shrink-0 h-fit">
+            <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-400 bg-zinc-950/40 backdrop-blur-md border border-zinc-900/80 px-3 py-1.5 rounded-lg shrink-0 h-fit">
               <span>FIGMA 2026 SPEC READY</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 inline-block"></span>
+              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 inline-block animate-pulse"></span>
             </div>
           </div>
 
@@ -197,8 +194,11 @@ export default function App() {
   const activeCaseStudy = selectedProjectId ? CASE_STUDIES[selectedProjectId] : null;
 
   return (
-    <div className="min-h-screen bg-white text-slate-850 flex flex-col justify-between selection:bg-indigo-100 selection:text-indigo-900 leading-normal font-sans">
+    <div className="min-h-screen bg-[#070709] text-white flex flex-col justify-between selection:bg-indigo-950 selection:text-indigo-300 leading-normal font-sans relative">
       
+      {/* Immersive high-performance 3D background */}
+      <ThreeCanvas />
+
       {/* Dynamic Navigation Header component */}
       <Header 
         selectedProjectId={selectedProjectId} 
@@ -207,7 +207,7 @@ export default function App() {
       />
 
       {/* Main Container Views */}
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 z-10 relative">
         <AnimatePresence mode="wait">
           {selectedProjectId && activeProject && activeCaseStudy ? (
             <CaseStudyView 
