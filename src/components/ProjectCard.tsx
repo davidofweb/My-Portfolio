@@ -179,6 +179,37 @@ export default function ProjectCard({ project, onViewCaseStudy }: ProjectCardPro
         <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]">
           {renderVisualPreview()}
         </div>
+
+        {/* Dynamic Project Summary Overlay showing when user hovers */}
+        <div className="absolute inset-0 z-20 bg-[#060608]/96 backdrop-blur-xs p-5 flex flex-col justify-between opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none">
+          <div className="space-y-4">
+            <div>
+              <span className="block text-[8.5px] font-mono font-bold tracking-widest text-zinc-500 uppercase">DESIGN ROLE</span>
+              <span className="text-xs sm:text-sm font-bold text-white block mt-0.5">{project.role}</span>
+            </div>
+            
+            <div>
+              <span className="block text-[8.5px] font-mono font-bold tracking-widest text-zinc-500 uppercase">KEY RESOLUTION</span>
+              <span className="text-xs text-zinc-300 block mt-1 leading-relaxed font-sans font-normal">
+                {project.id === "apex-saas" && "Optimized standard page sections and Auto-Layout rules, reducing bounce rates by 31%."}
+                {project.id === "novapay-dashboard" && "Created scalable, adaptive grids aligning dense financial lists with monospace digits."}
+                {project.id === "coreref-docs" && "Constructed a book-like API terminal reader layout keeping lines under comfortable 75ch."}
+              </span>
+            </div>
+          </div>
+
+          <div className="border-t border-zinc-900/80 pt-3 flex items-center justify-between">
+            <div className="flex flex-col">
+              <span className="text-[8px] font-mono font-bold text-zinc-500 uppercase">{project.stat.label}</span>
+              <span className="text-xs font-black text-indigo-400 font-mono mt-0.5">{project.stat.value}</span>
+            </div>
+            
+            <div className="rounded-md bg-indigo-950/40 border border-indigo-900/40 px-2 py-1 flex items-center gap-1.5 text-[8.5px] font-mono font-bold text-indigo-400">
+              <span>EXPLORE METRICS</span>
+              <ArrowRight className="h-2.5 w-2.5" />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Narrative Section Info */}
