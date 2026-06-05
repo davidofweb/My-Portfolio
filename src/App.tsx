@@ -4,6 +4,7 @@ import { PERSONAL_INFO, PROJECTS, CASE_STUDIES } from './data';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProjectCard from './components/ProjectCard';
+import ProjectSkeletonCard from './components/ProjectSkeletonCard';
 import CaseStudyView from './components/CaseStudyView';
 import SkillsSection from './components/SkillsSection';
 import AboutSection from './components/AboutSection';
@@ -11,11 +12,28 @@ import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
 import ThreeCanvas from './components/ThreeCanvas';
 import AccentSelector from './components/AccentSelector';
+import HeroSection from './components/HeroSection';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Figma, Sparkles, Layout, Compass, ShieldCheck, Mail, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Figma, Sparkles, Layout, Compass, ShieldCheck, Mail, ArrowUpRight, RefreshCw } from 'lucide-react';
 
 export default function App() {
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+
+  // Simulate loading projects on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadingProjects(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleReloadProjects = () => {
+    setLoadingProjects(true);
+    setTimeout(() => {
+      setLoadingProjects(false);
+    }, 1200);
+  };
 
   // If case study is opened, scroll to top automatically to see the material
   useEffect(() => {
@@ -37,117 +55,7 @@ export default function App() {
     }, 100);
   };
 
-  const renderHomeHero = () => {
-    return (
-      <section id="hero" className="relative overflow-hidden bg-transparent py-24 sm:py-32 border-b border-zinc-900/10">
-        
-        {/* Soft interactive radial background ambient lights */}
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-emerald-500/3 rounded-full blur-[120px] pointer-events-none"></div>
 
-        {/* Abstract background spacing layouts markers */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]"></div>
-        
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 flex flex-col items-center text-center z-10">
-          
-          {/* Top Pill badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 rounded-full bg-zinc-900/60 backdrop-blur-md border border-zinc-800/40 shadow-depth-2 px-4 py-1.5 text-xs font-semibold text-indigo-400 font-mono inline-flex items-center gap-1.5"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>{PERSONAL_INFO.availability}</span>
-          </motion.div>
- 
-          {/* Primary headline display text */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-none max-w-4xl"
-          >
-            Creating modern SaaS layouts designed for <span className="text-indigo-400 relative bg-linear-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent shadow-[0_0_20px_rgba(99,102,241,0.2)]">growth</span> and builder alignment.
-          </motion.h1>
- 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl font-sans"
-          >
-            I'm <strong>{PERSONAL_INFO.name}</strong>, a freelance Web and UI Designer specializing in high-converting landing pages, sleek SaaS panels, and rigorous developer-aligned visual systems.
-          </motion.p>
- 
-          {/* CTA Row buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 items-center"
-          >
-            <button
-              id="hero-cta-view-projects"
-              onClick={() => handleNavigateSection('projects')}
-              className="w-full sm:w-auto rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-black shadow-depth-2 hover:bg-zinc-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 group micro-active-button"
-            >
-              <span>Explore My Works</span>
-              <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
-            </button>
-            
-            <button
-              id="hero-cta-contact"
-              onClick={() => handleNavigateSection('contact')}
-              className="w-full sm:w-auto rounded-lg border border-zinc-800 bg-zinc-950/40 backdrop-blur-md shadow-depth-1 px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:border-zinc-700 hover:bg-zinc-900/60 active:scale-[0.98] transition-all duration-300 cursor-pointer text-center micro-active-button"
-            >
-              Start Project Brief
-            </button>
-          </motion.div>
- 
-          {/* Value statement indicators columns */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 border-t border-zinc-900/40 pt-12 text-left w-full max-w-4xl"
-          >
-            <div className="flex gap-4 p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-zinc-900/85 hover:border-zinc-800 shadow-depth-3 glass-bezel-dark hover-lift-3d transition-all duration-300">
-              <div className="p-2.5 h-fit bg-zinc-900 border border-zinc-800 rounded-xl shrink-0 shadow-xs text-indigo-400">
-                <Layout className="h-4 w-4" />
-              </div>
-              <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono">Conversion UI Core</h3>
-                <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed font-sans">Layout logic structured specifically to decrease bounce metrics.</p>
-              </div>
-            </div>
- 
-            <div className="flex gap-4 p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-zinc-900/85 hover:border-zinc-800 shadow-depth-3 glass-bezel-dark hover-lift-3d transition-all duration-300">
-              <div className="p-2.5 h-fit bg-zinc-900 border border-zinc-800 rounded-xl shrink-0 shadow-xs text-indigo-400">
-                <Compass className="h-4 w-4" />
-              </div>
-              <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono">Figma Auto-Layout</h3>
-                <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed font-sans">Fully responsive frames scaling beautifully down to target phone sizes.</p>
-              </div>
-            </div>
- 
-            <div className="flex gap-4 p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-zinc-900/85 hover:border-zinc-800 shadow-depth-3 glass-bezel-dark hover-lift-3d transition-all duration-300">
-              <div className="p-2.5 h-fit bg-zinc-900 border border-zinc-800 rounded-xl shrink-0 shadow-xs text-indigo-400">
-                <ShieldCheck className="h-4 w-4" />
-              </div>
-              <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono">No-Guess Dev Handoff</h3>
-                <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed font-sans">Documented spacing tokens matching standard CSS and Tailwind parameters.</p>
-              </div>
-            </div>
- 
-          </motion.div>
- 
-         </div>
-      </section>
-    );
-  };
 
   const renderProjectShowcase = () => {
     return (
@@ -168,21 +76,46 @@ export default function App() {
               </p>
             </div>
             
-            <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-400 bg-zinc-950/40 backdrop-blur-md border border-zinc-900/80 px-3 py-1.5 rounded-lg shrink-0 h-fit">
-              <span>FIGMA 2026 SPEC READY</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 inline-block animate-pulse"></span>
+            <div className="flex items-center gap-3 shrink-0 h-fit">
+              {/* Manual trigger reload simulation */}
+              <button
+                id="reload-projects-trigger"
+                onClick={handleReloadProjects}
+                disabled={loadingProjects}
+                className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-400 hover:text-white bg-zinc-900/80 hover:bg-zinc-850 px-3 py-1.5 rounded-lg h-fit border border-zinc-800/60 select-none cursor-pointer transition active:scale-[0.98] disabled:opacity-40"
+                title="Re-trigger simulated layout load"
+              >
+                <RefreshCw className={`h-3 w-3 ${loadingProjects ? 'animate-spin text-indigo-400' : ''}`} />
+                <span>Simulate Load</span>
+              </button>
+
+              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-400 bg-zinc-950/40 backdrop-blur-md border border-zinc-900/80 px-3 py-1.5 rounded-lg h-fit">
+                <span>FIGMA 2026 SPEC READY</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 inline-block animate-pulse"></span>
+              </div>
             </div>
           </div>
 
-          {/* Projects Grid layout */}
+          {/* Projects Grid layout with skeleton render state */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROJECTS.map((project) => (
-              <ProjectCard 
-                key={project.id} 
-                project={project} 
-                onViewCaseStudy={handleViewCaseStudy} 
-              />
-            ))}
+            {loadingProjects ? (
+              // Display skeleton loaders
+              Array.from({ length: PROJECTS.length || 3 }).map((_, idx) => (
+                <div key={`project-skeleton-${idx}`} className="animate-fade-in">
+                  <ProjectSkeletonCard />
+                </div>
+              ))
+            ) : (
+              // Display active cards
+              PROJECTS.map((project) => (
+                <div key={project.id} className="animate-fade-in">
+                  <ProjectCard 
+                    project={project} 
+                    onViewCaseStudy={handleViewCaseStudy} 
+                  />
+                </div>
+              ))
+            )}
           </div>
 
         </div>
@@ -224,7 +157,7 @@ export default function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {renderHomeHero()}
+              <HeroSection onNavigate={handleNavigateSection} />
               {renderProjectShowcase()}
               <SkillsSection />
               <AboutSection />
